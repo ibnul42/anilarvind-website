@@ -5,7 +5,7 @@ import Footer from '../Footer'
 
 function index() {
     return (
-        <div>
+        <div className='text-white'>
             <Header />
             <Home />
             <Footer />
