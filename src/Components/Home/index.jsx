@@ -20,6 +20,9 @@ function Home() {
     const { ref: betterAlternativeRef6, inView: betterAlternativeInView6 } = useInView();
     const { ref: betterAlternativeRef7, inView: betterAlternativeInView7 } = useInView();
 
+    const { ref: startRef, inView: startInView } = useInView();
+    const { ref: startRef2, inView: startInView2 } = useInView();
+
     const heroAnimation = useAnimation();
     const heroAnimation2 = useAnimation();
     const heroAnimation3 = useAnimation();
@@ -43,7 +46,36 @@ function Home() {
     const betterAlternativeAnimation6 = useAnimation();
     const betterAlternativeAnimation7 = useAnimation();
 
+    const startAnimation = useAnimation();
+    const startAnimation2 = useAnimation();
+
     useEffect(() => {
+        if (startInView2)
+        {
+            startAnimation2.start({
+                x: 0,
+                transition: {
+                    type: 'just', duration: 0.3, bounce: 0.0
+                },
+            })
+        }
+        if (!startInView2) 
+        {
+            startAnimation2.start({ x: '+100vw' })
+        }
+        if (startInView)
+        {
+            startAnimation.start({
+                x: 0,
+                transition: {
+                    type: 'just', duration: 0.3, bounce: 0.0
+                },
+            })
+        }
+        if (!startInView) 
+        {
+            startAnimation.start({ x: '-100vw' })
+        }
         if (betterAlternativeInView7)
         {
             betterAlternativeAnimation7.start({
@@ -275,7 +307,7 @@ function Home() {
             developerAnimation4.start({ x: '+100vw' })
         }
         console.log(developerInView6);
-    }, [heroInView, heroAnimation, heroAnimation2, heroAnimation3, developerInView, developerAnimation, developerAnimation2, developerAnimation3, developerAnimation4, developerInView5, developerAnimation5, developerInView6, developerAnimation6, developerInView7, developerAnimation7, developerInView8, developerAnimation8, developerInView9, developerAnimation9, developerInView10, developerAnimation10, betterAlternativeInView, betterAlternativeAnimation, betterAlternativeInView2, betterAlternativeAnimation2, betterAlternativeInView3, betterAlternativeAnimation3, betterAlternativeInView4, betterAlternativeInView5, betterAlternativeInView6, betterAlternativeInView7, betterAlternativeAnimation4, betterAlternativeAnimation5, betterAlternativeAnimation6, betterAlternativeAnimation7]);
+    }, [heroInView, heroAnimation, heroAnimation2, heroAnimation3, developerInView, developerAnimation, developerAnimation2, developerAnimation3, developerAnimation4, developerInView5, developerAnimation5, developerInView6, developerAnimation6, developerInView7, developerAnimation7, developerInView8, developerAnimation8, developerInView9, developerAnimation9, developerInView10, developerAnimation10, betterAlternativeInView, betterAlternativeAnimation, betterAlternativeInView2, betterAlternativeAnimation2, betterAlternativeInView3, betterAlternativeAnimation3, betterAlternativeInView4, betterAlternativeInView5, betterAlternativeInView6, betterAlternativeInView7, betterAlternativeAnimation4, betterAlternativeAnimation5, betterAlternativeAnimation6, betterAlternativeAnimation7, startInView, startInView2, startAnimation, startAnimation2]);
     return (
         <div className="overflow-x-hidden">
             <div className="bg-black">
@@ -469,6 +501,39 @@ function Home() {
                                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, nesciunt maxime fuga numquam porro voluptatibus.</p>
                                 </motion.div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* getting started */}
+            <div className="bg-[#131415] py-10 md:py-20">
+                <div className='max-w-6xl mx-auto'>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="col-span-1 px-3" ref={startRef}>
+                            <motion.div
+                                animate={startAnimation}
+                                className="flex flex-col gap-1 overflow-hidden">
+                                <img src="/assets/starting.svg" className="w-10/12 object-cover py-3" alt="start" />
+                                <p>If you are a blockchain developer</p>
+                                <p className="text-yellow-500 hover:underline cursor-pointer">Apply to Join Our Talent Network →</p>
+                            </motion.div>
+                        </div>
+                        <div className="col-span-1" ref={startRef2}>
+                            <motion.div
+                                animate={startAnimation2}
+                                className="flex flex-col gap-1 overflow-hidden justify-between px-3 py-5 h-full">
+                                <p className="text-4xl font-bold py-2">Get Started</p>
+                                <div className="flex flex-col gap-2 py-2">
+                                    <p><span className='text-yellow-500 font-semibold'>Step 1:</span> Fill Us In</p>
+                                    <p>Click the Start Hiring button to join our Freeflow Discord server, and use the #hire-a-dev channel to get started.</p>
+                                </div>
+                                <div className="flex flex-col gap-2 py-2">
+                                    <p><span className='text-yellow-500 font-semibold'>Step 2:</span> Get Connected</p>
+                                    <p>Freeflow will connect you with great developers.</p>
+                                </div>
+                                <button className="px-5 py-2 rounded-full bg-[#0029fc] font-bold w-max">Start Hiring</button>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
